@@ -6,14 +6,13 @@
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import seaborn as sns
 
 
 # In[2]:
 
 
-df=pd.read_csv("C:/Users/mukul/Downloads/datasets_33180_43520_heart (1).csv")
+df=pd.read_csv("datasets_33180_43520_heart (1).csv")
 df.head()
 
 
@@ -28,6 +27,18 @@ df.isnull().sum()
 
 sns.set_style("whitegrid")
 sns.countplot(x="target",data=df)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[5]:
@@ -197,7 +208,7 @@ random_search.fit(x_train,y_train)
 random_search.best_estimator_
 
 
-# In[32]:
+# In[29]:
 
 
 clf1_new=xgboost.XGBClassifier(base_score=0.5, booster='gbtree', colsample_bylevel=1,
@@ -211,21 +222,61 @@ clf1_new=xgboost.XGBClassifier(base_score=0.5, booster='gbtree', colsample_bylev
               tree_method='exact', validate_parameters=1, verbosity=None)
 
 
-# In[33]:
+# In[30]:
 
 
 clf1_new.fit(x,y)
 
 
-# In[34]:
+# In[31]:
 
 
 clf1_new.score(x,y)
 
 
+# In[34]:
+
+
+import pickle
+
+
+# In[36]:
+
+
+# pickling the model
+with open("heart_disease_pickle","wb") as f:
+    pickle.dump(clf1_new,f)
+
+
+# In[ ]:
+
+
+# reading the model
+with open("heart_disease_pickle","rb") as f:
+    clf1_new=pickle.load(f)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
 # 0.8421052631578947,
 
-# In[35]:
+# In[32]:
 
 
 import pandas as pd
@@ -233,7 +284,7 @@ import streamlit as st
 import yfinance as yf
 
 
-# In[68]:
+# In[33]:
 
 
 st.write("""
