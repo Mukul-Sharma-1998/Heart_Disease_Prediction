@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run Heart_Disease_UCI.py
+web: sh setup.sh && streamlit run Heart_Disease_UCI_new.py
